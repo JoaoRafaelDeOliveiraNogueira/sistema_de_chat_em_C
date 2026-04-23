@@ -89,7 +89,7 @@ int chat_system_call(void){
 //sitema de lib do chat: interecao com o usuario e front-end.
 int chat_lib_input(void){
     //previa explicacao sobre o programa ao usuario.
-    printf("================== CHAT INTERATIVO: MODO BETA 1.0 ====================\n");
+    printf("================== CHAT INTERATIVO: MODO BETA 1.2 ====================\n");
     printf("Digite [1] para ver as ragras e comandos. (caso não saiba).\nCOMMAND: ");
     
 }
