@@ -6,6 +6,7 @@ int chat_system_verificacao(void){
     //variaveis de verificacao de entrada do usuario.
     char comando_const_entrada[50] = "/entrar";
     char input_user[50];
+    
     scanf("%s", &input_user);
 
     //menu: Entrada para cada campo do programa, dependendo da entrada do usuario.
@@ -14,7 +15,52 @@ int chat_system_verificacao(void){
         chat_lib_input_command();
     }
     else if(strcmp(input_user, comando_const_entrada) == 0){
+        lib_login();
+        chat_system_login();
+    }
+}
+int chat_system_login(void)
+{
+    //tabela de usuários e senhas cadastrados(futuramente uma função própria).
+    char tabela_user[2][50] = {
+        {"kill123"},
+        {"starKrek"}
+    };
+    char tabela_password[2][50] = {
+        {"123"},
+        {"viadinho"}
+    };
+    //VARIAVEIS DE INPUT
+    char user[20];
+    char password[20];
+    char repeat_password[50];
+    //atributo de key
+    int key_user;
+    int key_password;
+
+    printf("username: ");
+    scanf("%s", user);
+    printf("password: ");
+    scanf("%s", password);
+
+    // criação da key: usuário
+    for(int i = 0; i < 2; i++){
+        if(strcmp(user, tabela_user[i]) == 0){
+              key_user = 1;  
+        }
+    }
+    for(int j = 0; j < 2; j++){
+        if(strcmp(password, tabela_password[j]) == 0){
+        key_password = 1;
+    }
+    }
+    
+    //validação de key
+    if(key_user == 1 && key_password == 1){
         chat_system_call();
+    }
+    else{
+        printf("usuário ou senha não encontrados\n");
     }
 }
 int chat_system_call(void){
@@ -32,10 +78,15 @@ int chat_system_call(void){
             i = 1;
             break;
         }
+        else if(strcmp(call, "/regras") == 0){
+            chat_lib_input_regras();
+            continue;
+        }
     }
 }
 
-//sitema de lib do chat: interecao com o usuario.
+
+//sitema de lib do chat: interecao com o usuario e front-end.
 int chat_lib_input(void){
     //previa explicacao sobre o programa ao usuario.
     printf("================== CHAT INTERATIVO: MODO BETA 1.0 ====================\n");
@@ -54,8 +105,21 @@ int chat_lib_input_regras(void){
 int chat_lib_input_command(void){
     printf("===============================C O M A N D O S=====================================\n");
     printf("comando /entrar: para entrar no chat, e iniciar conversa\n");
-    printf("comando /sair: para sair do chat, e finalizar conversa(só funciona quando está dentro do chat de conversa)");
+    printf("comando /sair: para sair do chat, e finalizar conversa(só funciona quando está dentro do chat de conversa)\n");
+    printf("comando /regras: para visualizar as regras no chat");
     printf("\n\n");
+}
+int lib_login(){
+    printf("==============================================\n");
+    printf("||                                          ||\n");
+    printf("||          SISTEMA DE ACESSO               ||\n");
+    printf("||                                          ||\n");
+    printf("==============================================\n");
+    printf("||                                          ||\n");
+    printf("||               Fazer Login                ||\n");
+    printf("||                                          ||\n");
+    printf("==============================================\n");
+    
 }
 
 //sistema de integracao.
