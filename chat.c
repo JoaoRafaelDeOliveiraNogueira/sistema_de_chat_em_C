@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+//VARIAVEIS DE LOGIN: GLOBAIS POIS PODEM SER USADAS COMO TRUE OR FALSE NAS FUNCOES
+    char user[20];
+    char password[20];
+
 //sistema do chat: verificação e back-end.
 int chat_system_verificacao(void){
     //variaveis de verificacao de entrada do usuario.
@@ -18,11 +22,14 @@ int chat_system_verificacao(void){
         lib_login();
         chat_system_login();
     }
+    else{
+        printf("O COMANDO: %s. NÃO EXISTE!!!\n", input_user);
+    }
 }
 int chat_system_login(void)
 {
-    //tabela de usuários e senhas cadastrados(futuramente uma função própria).
-    char tabela_user[2][50] = {
+     //tabela de usuários e senhas cadastrados(futuramente uma função própria).
+     char tabela_user[2][50] = {
         {"kill123"},
         {"starKrek"}
     };
@@ -30,14 +37,9 @@ int chat_system_login(void)
         {"123"},
         {"viadinho"}
     };
-    //VARIAVEIS DE INPUT
-    char user[20];
-    char password[20];
-    char repeat_password[50];
     //atributo de key
     int key_user;
     int key_password;
-
     printf("username: ");
     scanf("%s", user);
     printf("password: ");
@@ -73,7 +75,8 @@ int chat_system_call(void){
     printf("....................................................................\n");
     printf("....................................................................\n");
     for(i; i == 0; i = 0){
-        scanf("%s", &call);
+        printf("%s: ",user);
+        scanf("%s ", &call);
         if(strcmp(call, comando_const_saida) == 0){
             i = 1;
             break;
@@ -85,11 +88,10 @@ int chat_system_call(void){
     }
 }
 
-
 //sitema de lib do chat: interecao com o usuario e front-end.
 int chat_lib_input(void){
     //previa explicacao sobre o programa ao usuario.
-    printf("================== CHAT INTERATIVO: MODO BETA 1.2 ====================\n");
+    printf("================== CHAT INTERATIVO: MODO BETA 1.5 ====================\n");
     printf("Digite [1] para ver as ragras e comandos. (caso não saiba).\nCOMMAND: ");
     
 }
